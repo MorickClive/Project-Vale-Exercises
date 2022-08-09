@@ -14,13 +14,13 @@ The garage exercise is a standard scenario to practice the object-oriented progr
 ### Objectives
 
 A system that can model the following:
-	- Property:
-		- A Garage can be included as part of a property.
-	- Garage:
-		- Can have more than one vehicle at any given time.
-		- Maximum capacity of 20 vehicles at any given time.
-		- Can be empty.
-	- Vehicle:
-		- Must be able to describe qualities.
-		- Must support or define the number of wheels the vehicle has.
-		- Must have at least 3 various concrete implementations.
+- Property:
+	- A Garage can be included as part of a property.
+- Garage:
+	- Can have more than one vehicle at any given time.
+	- Maximum capacity of 20 vehicles at any given time.
+	- Can be empty.
+- Vehicle:
+	- Must be able to describe qualities.
+	- Must support or define the number of wheels the vehicle has.
+	- Must have at least 3 various concrete implementations.

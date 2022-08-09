@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Property {
 	
-	private String name;
+	private String addressTitle;
 	private String address;
 	
 	private ArrayList<Garage> garageUnits;
@@ -12,24 +12,24 @@ public class Property {
 	public Property() {
 		super();
 		garageUnits = new ArrayList<>();
-		name = "???";
+		addressTitle = "???";
 		address = "???";
 	}
 	
 	public Property(String name, String address) {
 		this();
-		this.name = name;
+		this.addressTitle = name;
 		this.address = address;
 	}
 
 	// ========================================
 
 	public String getName() {
-		return name;
+		return addressTitle;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.addressTitle = name;
 	}
 
 	public String getAddress() {
@@ -47,11 +47,15 @@ public class Property {
 	public void setGarageUnits(ArrayList<Garage> garageUnits) {
 		this.garageUnits = garageUnits;
 	}
+	
+	public void addGarageUnit(Integer limit) {
+		garageUnits.add(new Garage(limit));
+	}
 
 	// ========================================
 	@Override
 	public String toString() {
-		return "Property [name=" + name + ", address=" + address + ", garageUnits=" + garageUnits + "]";
+		return String.format("Property: \"%s, %s\" %n%s", addressTitle, address, garageUnits);
 	}
 	
 }
