@@ -2,60 +2,48 @@ package com.mc.exercises.garage.model.buildings;
 
 import java.util.ArrayList;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+
+@EqualsAndHashCode
 public class Property {
 	
-	private String addressTitle;
+	@Getter	@Setter
+	private String name;
+	@Getter	@Setter
 	private String address;
 	
 	private ArrayList<Garage> garageUnits;
 	
 	public Property() {
 		super();
-		garageUnits = new ArrayList<>();
-		addressTitle = "???";
+		name = "???";
 		address = "???";
+		garageUnits = new ArrayList<>();
 	}
 	
-	public Property(String name, String address) {
+	public Property(String name, String address, ArrayList<Garage> garage) {
 		this();
-		this.addressTitle = name;
+		this.name = name;
 		this.address = address;
+		this.garageUnits = garage;
 	}
 
 	// ========================================
-
-	public String getName() {
-		return addressTitle;
-	}
-
-	public void setName(String name) {
-		this.addressTitle = name;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
+	
 	public ArrayList<Garage> getGarageUnits() {
 		return garageUnits;
 	}
-
-	public void setGarageUnits(ArrayList<Garage> garageUnits) {
-		this.garageUnits = garageUnits;
-	}
 	
-	public void addGarageUnit(Integer limit) {
-		garageUnits.add(new Garage(limit));
+	public boolean addGarageUnit(Integer limit) {
+		return garageUnits.add(new Garage(limit));
 	}
 
 	// ========================================
 	@Override
 	public String toString() {
-		return String.format("Property: \"%s, %s\" %n%s", addressTitle, address, garageUnits);
+		return String.format("Property: \"%s, %s\" %n%s", name, address, garageUnits);
 	}
 	
 }

@@ -1,4 +1,6 @@
-package com.mc.exercises.garage;
+package exercises.garage;
+
+import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
@@ -16,9 +18,8 @@ public class GarageExerciseTest {
 	public void test() {
 		System.out.println("Hello Test");
 		
-		Property myHouse = new Property("23 GreenTest road", "town, county, region");
+		Property myHouse = new Property("23 GreenTest road", "town, county, region", new ArrayList<>());
 		Garage myGarage;
-		
 		myHouse.addGarageUnit(20);
 		
 		myGarage = myHouse.getGarageUnits().get(0);
@@ -37,15 +38,15 @@ public class GarageExerciseTest {
 
 		// EDIT
 		// ========================================
-		myGarage.editVehicle(3, new Car("Honda", 1570f, 4));
-
+		myGarage.editVehicle(3, new Car("+Honda+", 1570f, 4));
+		
 		System.out.format("%n%1$s %n%2$s %n%1$s %n", DIV, "POST-EDIT: Garage Contents");
 		myGarage.displayContents();
 		
 		// REMOVAL
 		// ========================================
 		myGarage.remove(4);
-
+		
 		System.out.format("%n%1$s %n%2$s %n%1$s %n", DIV, "POST-REMOVAL: Garage Contents");
 		myGarage.displayContents();
 		
