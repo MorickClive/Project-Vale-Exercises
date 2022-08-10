@@ -5,22 +5,37 @@ import java.util.stream.Collectors;
 
 import com.mc.exercises.garage.model.vehicles.interfaces.Vehicle;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+
+@EqualsAndHashCode
 public class Garage {
 
 	private static int idIncrementer = 0;
 
 	private HashMap<Integer, Vehicle> myContents;
+	@Getter
 	private Integer capacity;
-
+	
+	public Garage() {
+		super();
+		this.myContents = new HashMap<>();
+		this.capacity = 20;
+	}
+	
 	public Garage(Integer vehicleCapacity) {
 		super();
 		this.myContents = new HashMap<>();
 		this.capacity = vehicleCapacity;
 	}
-
-	public Integer getCapacity() {
-		return capacity;
+	
+	public Garage(HashMap<Integer, Vehicle> contentsMap, Integer vehicleCapacity) {
+		super();
+		this.myContents = contentsMap;
+		this.capacity = vehicleCapacity;
 	}
+	
+	// ========================================
 
 	public boolean add(Vehicle vehicle) {
 		if (myContents.size() - 1 < capacity && !myContents.containsKey(idIncrementer + 1)) {
@@ -35,28 +50,42 @@ public class Garage {
 		return myContents.get(id);
 	}
 
-	public void displayVehicle(Integer id) {
-		if (myContents.containsKey(id)) {
-			System.out.println(myContents.get(id));
-		} else {
-			System.out.format("Display Failed: Vehicle id:[%d] not found!%n", id);
-		}
+	public String displayVehicle(Integer id) {
+		String message = 
+				myContents.containsKey(id) ? 
+				myContents.get(id).toString() :
+				String.format("Display Failed: Vehicle id:[%d] not found!", id);
+		
+		System.out.println(message);
+		
+		return message;
 	}
 
-	public void displayContents() {
+	public String displayContents() {
+		StringBuilder sb;
+		String message = "";
+		
 		if (myContents.size() > 0) {
-			myContents.values().stream().forEach(x -> System.out.println(x));
+			sb = new StringBuilder();
+			myContents.values().stream().forEach(x -> sb.append(x));
+			message = sb.toString();
 		} else {
-			System.out.println("Garage is empty!");
+			message = "Garage is empty!";
 		}
+		
+		System.out.println(message);
+		
+		return message;
 	}
 
-	public void editVehicle(Integer id, Vehicle vehicle) {
+	public boolean editVehicle(Integer id, Vehicle vehicle) {
 		if(myContents.containsKey(id)) {
 			myContents.replace(id, vehicle);
+			return true;
 		} else {
 			System.out.format("Edit Failed: Vehicle id:[%d] not found!%n", id);
 		}
+		return false;
 	}
 
 	public boolean remove(Integer id) {
@@ -67,7 +96,7 @@ public class Garage {
 
 	@Override
 	public String toString() {
-		return String.format("Garage[%d LIMIT]:\n %s", 
+		return String.format("Garage[%d LIMIT]:%n%s", 
 				capacity, 
 					myContents.size() > 0 ? 
 					myContents.values().stream().collect(Collectors.toList()).toString() :
