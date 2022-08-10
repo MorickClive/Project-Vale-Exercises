@@ -16,7 +16,7 @@ public class MotorBikeTest {
 	
 	private final String testModel = "Volvo";
 	private final Float testMilage = 15000.0f;
-	private final Integer testNumWheels = 4;
+	private final Integer testNumWheels = 2;
 	
 	@BeforeEach
 	public void testSetup() {
@@ -43,6 +43,16 @@ public class MotorBikeTest {
 		assertEquals(testBike.getModel(), testModel);
 		assertEquals(testBike.getMilage(), testMilage);
 		assertEquals(testBike.getNumWheels(), testNumWheels);
+	}
+	
+	@Test
+	public void method_milage() {
+		float actual;
+		
+		testBike.setMilage(12000f);
+		actual = testBike.getMilage();
+
+		assertEquals(12000f, actual);
 	}
 	
 	@Test

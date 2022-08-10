@@ -16,8 +16,6 @@ public class GarageExerciseTest {
 
 	@Test
 	public void test() {
-		System.out.println("Hello Test");
-		
 		Property myHouse = new Property("23 GreenTest road", "town, county, region", new ArrayList<>());
 		Garage myGarage;
 		myHouse.addGarageUnit(20);
