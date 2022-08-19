@@ -16,8 +16,9 @@ public class GarageExerciseTest {
 
 	@Test
 	public void test() {
-		Property myHouse = new Property("23 GreenTest road", "town, county, region", new ArrayList<>());
+
 		Garage myGarage;
+		Property myHouse = new Property("23 GreenTest road", "town, county, region", new ArrayList<>());
 		myHouse.addGarageUnit(20);
 		
 		myGarage = myHouse.getGarageUnits().get(0);
@@ -28,7 +29,7 @@ public class GarageExerciseTest {
 		myGarage.add(new Truck("BMW", 13500f, 4));
 		myGarage.add(new MotorBike("Honda", 1570f, 4));
 		myGarage.add(new MotorBike("Honda", 1570f, 4));
-
+		
 		// DISPLAY
 		// ========================================
 		System.out.format("%n%1$s %n%2$s %n%1$s %n", DIV, "Garage Contents");

@@ -1,4 +1,4 @@
-package exercises;
+package exercises.utils;
 
 import org.junit.jupiter.api.Test;
 
