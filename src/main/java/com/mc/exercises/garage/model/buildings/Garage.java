@@ -2,7 +2,9 @@ package com.mc.exercises.garage.model.buildings;
 
 import java.util.HashMap;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
+import com.mc.exercises.garage.model.vehicles.Car;
 import com.mc.exercises.garage.model.vehicles.interfaces.Vehicle;
 
 import lombok.EqualsAndHashCode;
@@ -13,9 +15,9 @@ public class Garage {
 
 	private static int idIncrementer = 0;
 
-	private HashMap<Integer, Vehicle> myContents;
 	@Getter
 	private Integer capacity;
+	private HashMap<Integer, Vehicle> myContents;
 	
 	public Garage() {
 		super();
@@ -39,7 +41,7 @@ public class Garage {
 
 	public boolean add(Vehicle vehicle) {
 		if (myContents.size() - 1 < capacity && !myContents.containsKey(idIncrementer + 1)) {
-			myContents.put(idIncrementer++, vehicle);
+			myContents.put(++idIncrementer, vehicle);
 			return true;
 		} else {
 			return false;
@@ -67,7 +69,7 @@ public class Garage {
 		
 		if (myContents.size() > 0) {
 			sb = new StringBuilder();
-			myContents.values().stream().forEach(x -> sb.append(x));
+			myContents.values().stream().forEach(x -> sb.append(x+"\n"));
 			message = sb.toString();
 		} else {
 			message = "Garage is empty!";
@@ -96,12 +98,17 @@ public class Garage {
 
 	@Override
 	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		
+		myContents.values().stream()
+		.forEach( x -> sb.append(String.format("\t- %s%n", x.toString())) );
+		
 		return String.format("Garage[%d LIMIT]:%n%s", 
-				capacity, 
-					myContents.size() > 0 ? 
-					myContents.values().stream().collect(Collectors.toList()).toString() :
+					capacity, myContents.size() > 0 ?
+					sb.toString() : 
 					"[Empty]"
 				);
+		
 	}
 
 }

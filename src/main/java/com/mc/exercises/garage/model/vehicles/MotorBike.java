@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
 public class MotorBike implements Vehicle {
 	
 	private String model;
@@ -18,6 +17,13 @@ public class MotorBike implements Vehicle {
 		this.model = "???";
 		this.milage = 0.0f;
 		this.numWheels = 2;
+	}
+
+	public MotorBike(String model, Float milage, Integer numWheels) {
+		super();
+		this.model = model;
+		this.milage = milage;
+		this.numWheels = numWheels <= 2 ? numWheels : 2;
 	}
 
 	// ========================================
@@ -33,5 +39,5 @@ public class MotorBike implements Vehicle {
 	public String toString() {
 		return description();
 	}
-
+	
 }
