@@ -24,4 +24,8 @@ hs_err_pid*
 /target/
 
 src/main/resources/drivers
+<<<<<<< HEAD
 src/test/resources/drivers
+=======
+src/test/resources/drivers
+>>>>>>> 9afc5e5 (AD: added in general test tasks)
