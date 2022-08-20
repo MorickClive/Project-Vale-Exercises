@@ -10,18 +10,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
 
-import selenium.pom.GooglePortalPage;
+import selenium.pom.google.GooglePortalPage;
 
 public class InitialTest {
 
 	@Test
-	private void seleniumRefresher() {
-		try {
+	public void seleniumRefresher() throws InterruptedException {
 			seleniumDriver();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	private static void seleniumDriver() throws InterruptedException {
